@@ -62,14 +62,12 @@ function renderFiles (parent, files, depth = 0) {
     };
 
     if (file.isDir) {
-      $filename.style.color = '#999';
-      $filename.style.fontWeight = '600';
+      $filename.classList.add('dir');
     } else {
-      $filename.style.color = '';
-      $filename.style.fontWeight = '';
+      $filename.classList.remove('dir');
     }
 
-    $filename.style.marginLeft = `${depth * 0.5}rem`;
+    $filename.style.marginLeft = `${depth * 0.75}rem`;
 
     if (file.children) {
       renderFiles($children, file.children, depth + 1);

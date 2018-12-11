@@ -14,14 +14,15 @@ menu {
   width: 10rem;
 
   font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
-  font-size: .875rem;
+  font-size: .75rem;
   font-weight: 500;
   line-height: 1.5;
   letter-spacing: -0.03125em;
 
-  overflow: auto;
-  background-color: #111;
-  color: #eee;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background-color: #f8f8f8;
+  color: #222;
   cursor: default;
   user-select: none;
 }
@@ -33,8 +34,12 @@ file p {
   margin: -.125rem -.5rem;
   padding: .125rem .5rem;
 }
+file p.dir {
+  font-weight: 700;
+  color: #333;
+}
 file p:hover {
-  background-color: #222;
+  background-color: #eee;
 }
 textarea {
   position: fixed;
@@ -51,7 +56,7 @@ textarea {
   white-space: nowrap;
   outline: 0;
   border: 0;
-  background-color: #151515;
-  color: #fff;
+  background-color: #fff;
+  color: #222;
   tab-size: 2;
 }
