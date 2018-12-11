@@ -67,7 +67,7 @@ function renderFiles (parent, files, depth = 0) {
       $filename.classList.remove('dir');
     }
 
-    $filename.style.marginLeft = `${depth * 0.75}rem`;
+    $filename.style.marginLeft = `${depth * 0.625}rem`;
 
     if (file.children) {
       renderFiles($children, file.children, depth + 1);
