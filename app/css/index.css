@@ -1,0 +1,57 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+html {
+  box-sizing: border-box;
+}
+menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 10rem;
+
+  font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
+  font-size: .875rem;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: -0.03125em;
+
+  overflow: auto;
+  background-color: #111;
+  color: #eee;
+  cursor: default;
+  user-select: none;
+}
+file {
+  position: relative;
+  display: block;
+}
+file p {
+  margin: -.125rem -.5rem;
+  padding: .125rem .5rem;
+}
+file p:hover {
+  background-color: #222;
+}
+textarea {
+  position: fixed;
+  top: 0;
+  left: 10rem;
+  right: 0;
+  bottom: 0;
+  width: calc(100vw - 10rem);
+  font: inherit;
+  font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace;
+  font-size: .875rem;
+  line-height: 1.5;
+  padding: 1rem;
+  white-space: nowrap;
+  outline: 0;
+  border: 0;
+  background-color: #151515;
+  color: #fff;
+  tab-size: 2;
+}
