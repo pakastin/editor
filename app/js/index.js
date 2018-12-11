@@ -25,7 +25,7 @@ document.body.appendChild($editor);
 
 ipcRenderer.on('read', (e, data) => {
   const { contents } = data;
-  $editor.textContent = contents;
+  $editor.value = contents;
 });
 
 ipcRenderer.send('files');
