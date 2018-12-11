@@ -23,7 +23,7 @@ ipcMain.on('read', async (e, data) => {
 
   const stats = await stat(fullpath);
 
-  if (stats.size > 100000) {
+  if (stats.size > 100000000) {
     e.sender.send('read', {
       fullpath,
       contents: 'FILE TOO BIG'

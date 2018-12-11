@@ -51,6 +51,7 @@ textarea {
   font: inherit;
   font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace;
   font-size: .875rem;
+  letter-spacing: -0.03125em;
   line-height: 1.5;
   padding: 1rem;
   white-space: nowrap;
