@@ -44,7 +44,7 @@ function renderFiles (parent, files, depth = 0) {
 
     $filename.textContent = file.name;
     $filename.ondblclick = () => {
-      if (file.isDir) {
+      if (file.isDir && file.name !== '..') {
         ipcRenderer.send('files', { fullpath: file.fullpath, reset: true });
         $menu.scrollTop = 0;
       }
