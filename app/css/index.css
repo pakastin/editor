@@ -31,8 +31,8 @@ file {
   display: block;
 }
 file p {
-  margin: -.125rem -.5rem;
-  padding: .125rem .5rem;
+  margin: -.125rem 0;
+  padding: .125rem .75rem;
 }
 file p.dir {
   font-weight: 700;
