@@ -33,12 +33,13 @@ let editor;
       scrollBeyondLastLine: false,
       lineNumbersMinChars: 4,
       fontFamily: 'SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace',
-      fontSize: 12,
-      lineHeight: 18,
+      fontSize: 14,
+      lineHeight: 21,
       letterSpacing: -0.5,
       minimap: {
         enabled: false
-      }
+      },
+      renderLineHighlight: 'all'
     });
   });
 })();

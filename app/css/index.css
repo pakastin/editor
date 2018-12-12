@@ -58,3 +58,8 @@ html {
   color: #222;
   tab-size: 2;
 }
+#editor .monaco-editor .margin-view-overlays .current-line-margin,
+#editor .monaco-editor .view-overlays .current-line {
+  border: 0;
+  background-color: #f5f5f5;
+}
