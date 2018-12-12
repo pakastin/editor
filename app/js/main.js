@@ -29,7 +29,12 @@ let editor;
   self.module = undefined;
 
   amdLoader.require(['vs/editor/editor.main'], () => {
-    editor = monaco.editor.create($editor);
+    editor = monaco.editor.create($editor, {
+      scrollBeyondLastLine: false,
+      minimap: {
+        enabled: false
+      }
+    });
   });
 })();
 
@@ -57,7 +62,6 @@ ipcRenderer.on('files', (e, { dir, files }) => {
     $menu.removeChild($menu.firstChild);
   }
   renderFiles($menu, files);
-  localStorage.setItem('currentDir', dir);
 });
 
 const currentDir = localStorage.getItem('currentDir');
@@ -79,12 +83,14 @@ function renderFiles (parent, files, depth = 0) {
       if (file.isDir && file.name !== '..') {
         ipcRenderer.send('files', { fullpath: file.fullpath, reset: true });
         $menu.scrollTop = 0;
+        localStorage.setItem('currentDir', file.fullpath);
       }
     };
     $filename.onclick = () => {
       if (file.isDir) {
         if (file.name === '..') {
           ipcRenderer.send('files', { fullpath: file.fullpath, reset: true });
+          localStorage.setItem('currentDir', file.fullpath);
         } else {
           ipcRenderer.send('files', { fullpath: file.fullpath });
         }
