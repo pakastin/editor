@@ -47,6 +47,10 @@ $editor.id = 'editor';
 document.body.appendChild($menu);
 document.body.appendChild($editor);
 
+window.addEventListener('resize', () => {
+  editor.layout();
+});
+
 ipcRenderer.on('read', (e, data) => {
   const { contents } = data;
   const oldModel = editor.getModel();
