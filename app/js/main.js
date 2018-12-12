@@ -31,6 +31,11 @@ let editor;
   amdLoader.require(['vs/editor/editor.main'], () => {
     editor = monaco.editor.create($editor, {
       scrollBeyondLastLine: false,
+      lineNumbersMinChars: 4,
+      fontFamily: 'SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace',
+      fontSize: 12,
+      lineHeight: 18,
+      letterSpacing: -0.5,
       minimap: {
         enabled: false
       }
