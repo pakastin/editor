@@ -25,7 +25,7 @@ const serve = () => {
   if (queue.length) {
     queue[0]();
   }
-}
+};
 
 ipcMain.on('read', (e, data) => {
   queue.push(async () => {

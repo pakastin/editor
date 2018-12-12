@@ -6,7 +6,7 @@
 html {
   box-sizing: border-box;
 }
-menu {
+#menu {
   position: fixed;
   top: 0;
   left: 0;
@@ -26,22 +26,22 @@ menu {
   cursor: default;
   user-select: none;
 }
-file {
+.file {
   position: relative;
   display: block;
 }
-file p {
+.file p {
   margin: -.125rem 0;
   padding: .125rem .75rem;
 }
-file p.dir {
+.file p.dir {
   font-weight: 700;
   color: #333;
 }
-file p:hover {
+.file p:hover {
   background-color: #eee;
 }
-textarea {
+#editor {
   position: fixed;
   top: 0;
   left: 10rem;
@@ -51,9 +51,6 @@ textarea {
   font: inherit;
   font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace;
   font-size: .875rem;
-  letter-spacing: -0.03125em;
-  line-height: 1.5;
-  padding: 1rem;
   white-space: nowrap;
   outline: 0;
   border: 0;

@@ -4,12 +4,17 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "dev": "node dev",
     "start": "electron app",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "copy-vs": "cp -r node_modules/monaco-editor/min/vs app/js/vs",
+    "build-js": "rollup -w -c"
   },
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {},
+  "author": "Juha Lindstedt",
+  "license": "MIT",
+  "devDependencies": {
+    "monaco-editor": "~0.15.6",
+    "rollup": "~0.67.4"
+  },
   "dependencies": {
     "electron": "~3.0.11"
   }

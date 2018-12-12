@@ -1,31 +1,54 @@
+'use strict';
+
+/* global monaco */
 const { ipcRenderer } = require('electron');
+const path = require('path');
+
+const { localStorage } = window;
 
 const createElement = (tagName) => {
   const element = document.createElement(tagName);
   return element;
 };
 
-const $menu = createElement('menu');
-const $editor = createElement('textarea');
+const $menu = createElement('div');
+const $editor = createElement('div');
 
-$editor.onkeydown = e => {
-  if (e.key === 'Tab') {
-    e.preventDefault();
+let editor;
 
-    const { selectionStart, selectionEnd } = $editor;
+(() => {
+  /* global self */
+  const amdLoader = require('./js/vs/loader.js');
 
-    $editor.value = $editor.value.slice(0, selectionStart) + '\t' + $editor.value.slice(selectionEnd);
+  console.log(__dirname);
 
-    $editor.selectionStart = $editor.selectionEnd = selectionStart + 1;
-  }
-};
+  amdLoader.require.config({
+    baseUrl: path.join(__dirname, 'js')
+  });
+
+  self.module = undefined;
+
+  amdLoader.require(['vs/editor/editor.main'], () => {
+    editor = monaco.editor.create($editor);
+  });
+})();
+
+$menu.id = 'menu';
+$editor.id = 'editor';
 
 document.body.appendChild($menu);
 document.body.appendChild($editor);
 
 ipcRenderer.on('read', (e, data) => {
   const { contents } = data;
-  $editor.value = contents;
+  const oldModel = editor.getModel();
+  const newModel = monaco.editor.createModel(contents);
+
+  editor.setModel(newModel);
+
+  if (oldModel) {
+    oldModel.dispose();
+  }
 });
 
 ipcRenderer.send('files');
@@ -34,13 +57,22 @@ ipcRenderer.on('files', (e, { dir, files }) => {
     $menu.removeChild($menu.firstChild);
   }
   renderFiles($menu, files);
+  localStorage.setItem('currentDir', dir);
 });
+
+const currentDir = localStorage.getItem('currentDir');
+
+if (currentDir) {
+  ipcRenderer.send('files', { fullpath: currentDir, reset: true });
+}
 
 function renderFiles (parent, files, depth = 0) {
   for (const file of files) {
-    const $file = createElement('file');
+    const $file = createElement('div');
     const $filename = createElement('p');
     const $children = createElement('children');
+
+    $file.className = 'file';
 
     $filename.textContent = file.name;
     $filename.ondblclick = () => {
