@@ -8,7 +8,7 @@
     "start": "electron app",
     "copy-vs": "cp -r node_modules/monaco-editor/min/vs app/js/vs",
     "copy-xterm": "cp -r node_modules/xterm/lib app/js/xterm",
-    "postinstall": "npm run rebuild-node-pty",
+    "postinstall": "cd app && npm i && cd .. && npm run rebuild-node-pty",
     "rebuild-node-pty": "electron-rebuild -f -w app/node_modules/node-pty -m app",
     "build-js": "rollup -w -c"
   },
