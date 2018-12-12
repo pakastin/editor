@@ -16,6 +16,7 @@ const createElement = (tagName) => {
 const $menu = createElement('div');
 const $editor = createElement('div');
 const $terminal = createElement('div');
+const $terminalContent = createElement('div');
 
 let editor;
 
@@ -48,6 +49,9 @@ let editor;
 $menu.id = 'menu';
 $editor.id = 'editor';
 $terminal.id = 'terminal';
+$terminalContent.id = 'terminal-content';
+
+$terminal.appendChild($terminalContent);
 
 document.body.appendChild($menu);
 document.body.appendChild($editor);
@@ -57,13 +61,14 @@ Terminal.applyAddon(fit);
 const term = new Terminal({
   fontFamily: 'SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace',
   fontSize: 14,
-  fontWeight: 600,
+  fontWeight: 500,
+  lineHeight: 1.25,
   theme: {
     cursor: '#ff00ff'
   }
 });
 
-term.open($terminal);
+term.open($terminalContent);
 term.fit();
 
 const os = require('os');
@@ -110,8 +115,7 @@ ipcRenderer.on('files', (e, { dir, files, reset }) => {
   renderFiles($menu, files);
 
   if (reset) {
-    ptyProcess.write(`cd ${dir}\n`);
-    ptyProcess.write('clear\n');
+    ptyProcess.write(`cd ${dir}\nclear\n`);
   }
 });
 
@@ -125,8 +129,9 @@ function renderFiles (parent, files, depth = 0) {
   for (const file of files) {
     const $file = createElement('div');
     const $filename = createElement('p');
-    const $children = createElement('children');
+    const $children = createElement('div');
 
+    $children.className = 'children';
     $file.className = 'file';
 
     $filename.textContent = file.name;
@@ -147,6 +152,12 @@ function renderFiles (parent, files, depth = 0) {
         }
       } else {
         ipcRenderer.send('read', { fullpath: file.fullpath });
+
+        if (file.opened) {
+          $file.classList.add('opened');
+        } else {
+          $file.classList.remove('opened');
+        }
       }
     };
 

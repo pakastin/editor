@@ -47,7 +47,11 @@ html {
   left: 0;
   right: 0;
   height: 10rem;
-  background-color: #111;
+  background-color: #000;
+  padding: .5rem;
+}
+#terminal-content {
+  height: 100%;
 }
 #editor {
   position: fixed;
@@ -70,4 +74,7 @@ html {
 #editor .monaco-editor .view-overlays .current-line {
   border: 0;
   background-color: #f5f5f5;
+}
+.decorationsOverviewRuler {
+  display: none;
 }
