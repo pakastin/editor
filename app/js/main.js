@@ -60,7 +60,7 @@ document.body.appendChild($terminal);
 Terminal.applyAddon(fit);
 const term = new Terminal({
   fontFamily: 'SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace',
-  fontSize: 14,
+  fontSize: 13,
   fontWeight: 500,
   lineHeight: 1.25,
   theme: {
