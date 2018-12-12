@@ -7,15 +7,20 @@
     "dev": "node dev",
     "start": "electron app",
     "copy-vs": "cp -r node_modules/monaco-editor/min/vs app/js/vs",
+    "copy-xterm": "cp -r node_modules/xterm/lib app/js/xterm",
+    "postinstall": "npm run rebuild-node-pty",
+    "rebuild-node-pty": "electron-rebuild -f -w app/node_modules/node-pty -m app",
     "build-js": "rollup -w -c"
   },
   "author": "Juha Lindstedt",
   "license": "MIT",
   "devDependencies": {
     "monaco-editor": "~0.15.6",
-    "rollup": "~0.67.4"
+    "rollup": "~0.67.4",
+    "xterm": "~3.9.0"
   },
   "dependencies": {
-    "electron": "~3.0.11"
+    "electron": "~3.0.11",
+    "electron-rebuild": "~1.8.2"
   }
 }

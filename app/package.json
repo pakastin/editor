@@ -1,5 +1,8 @@
 {
   "name": "editor",
   "version": "1.0.0",
-  "main": "main.js"
+  "main": "main.js",
+  "dependencies": {
+    "node-pty": "~0.7.8"
+  }
 }

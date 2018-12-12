@@ -81,7 +81,8 @@ ipcMain.on('files', (e, data) => {
 
       e.sender.send('files', {
         dir,
-        files: state.files
+        files: state.files,
+        reset
       });
       serve();
       return;
@@ -113,7 +114,8 @@ ipcMain.on('files', (e, data) => {
 
       e.sender.send('files', {
         dir,
-        files: state.files
+        files: state.files,
+        reset
       });
       serve();
       return;
@@ -123,7 +125,8 @@ ipcMain.on('files', (e, data) => {
 
     e.sender.send('files', {
       dir,
-      files: state.files
+      files: state.files,
+      reset
     });
 
     serve();

@@ -10,7 +10,7 @@ html {
   position: fixed;
   top: 0;
   left: 0;
-  bottom: 0;
+  bottom: 10rem;
   width: 10rem;
 
   font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
@@ -41,12 +41,20 @@ html {
 .file p:hover {
   background-color: #eee;
 }
+#terminal {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 10rem;
+  background-color: #111;
+}
 #editor {
   position: fixed;
   top: 0;
   left: 10rem;
   right: 0;
-  bottom: 0;
+  bottom: 10rem;
   width: calc(100vw - 10rem);
   font: inherit;
   font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace;
